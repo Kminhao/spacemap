@@ -72,3 +72,11 @@ Ambas as ferramentas irão auxiliar no processo de desenvolvimento, o `nodemon` 
 Essas duas ferramentas são instaladas de forma ligeiramente diferente, o `nodemon` com o comando `npm install -D nodemon` e a `debug` com o comando `npm install -P debug`. Perceba a diferença das flags `-P` e `-D`, essas flags determinam em quais ambientes as bibliotecas devem ser instaladas. No caso do `nodemon` ele foi instalado com a flag `-D` e por isso estará disponível somente no ambiente de desenvolvimento. Já o `debug` foi instalado com a flag `-P` e por isso estará disponível nos ambientes de desenvolvimento e também de produção. Para mais informações sobre o `npm install` e suas flags consulte a documentação [aqui](https://docs.npmjs.com/cli/install).
 
 Você pode ter notado que com essa instalação o arquivo `package.json` foi alterado e um novo arquivo chamado `package-lock.json` foi criado, esses arquivos armazenam informações sobre as dependências do nosso projeto e essas alterações dizem quais bibliotecas e quais versões foram instaladas, facilitando que qualquer pessoa possa copiar nosso projeto e instalar todas as dependências necessárias. As bibliotecas por sua vez são instaladas no diretório `node_modules`, esse diretório não é salvo para nosso repositório devido as configurações do arquivo `.gitignore`.
+
+#### Ferramenta `nodemon` e comando `npx`
+
+A ferramenta nodemon monitora os arquivos do projeto e reinicia o Node.JS sempre que alguma mudança for detectada. Inicialmente nós não vamos precisar de nenhuma configuração para usar essa ferramenta, basta abrir um terminal no diretório do projeto e digitar `npx nodemon` para executar. Acesse o servidor no navegador e veja o resultado, depois altere a mensagem no arquivo `index.js` e salve, atualize a página do navegador e a mudança deverá aparecer pois o nodemon já reiniciou o Node.js. A documentação do nodemon você encontra [aqui](https://nodemon.io/).
+
+O comando `npx` permite executar as ferramentas instaladas com o `npm` no diretório do nosso projeto sem que seja necessário configurar o caminho para os executáveis (variável PATH) dessas ferramentas.
+
+Você encontra a documentação do npx [aqui](https://www.npmjs.com/package/npx).
