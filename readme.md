@@ -209,3 +209,22 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 ```
+
+#### Usando Middlewares de bibliotecas externas (morgan)
+
+Commit: [67826717acc1dc2febed27edac705bbb427618cb](https://github.com/edupsousa/dw2-declaracoes-prova/tree/67826717acc1dc2febed27edac705bbb427618cb)
+
+Nas etapas anteriores desenvolvemos um Middleware simples para realizar o log das requisições recebidas, entretanto, existem um pacote disponível no repositório do NPM, chamado [morgan](https://www.npmjs.com/package/morgan), que desempenha essa mesma função, com recursos muito além daqueles que implementamos.
+
+Para instalar esse pacote basta usar o comando `npm install -P morgan`, em seguida para utilizar a biblioteca em nossa aplicação devemos realizar a importação e em seguida o registro do Middleware.
+
+```js
+const express = require('express');
+const morgan = require('morgan');
+
+const app = express();
+
+app.use(morgan('dev'));
+```
+
+A string passada como parâmetro para a função morgan determina o formato do log gerado, para mais informações consulte a documentação [aqui](https://www.npmjs.com/package/morgan).
