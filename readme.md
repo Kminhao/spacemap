@@ -114,7 +114,7 @@ No caso nós definimos que somente as mensagens do _namespace_ servidor serão m
 
 ### Express
 
-O Express https://expressjs.com/ é um framework bastante popular na criação de aplicações Web com o Node.js. É importante salientar que não é necessário utilizar um framework como o Express para desenvolver uma aplicação Web, as bibliotecas integradas ao Node.js já possuem todas as funcionalidades necessárias para isso. Entretanto, utilizar um framework torna o processo de desenvolvimento muito mais simples e eficiente, pois evitar que tenhamos que _reinventar a roda_ desenvolvendo funcionalidades que são comuns a maioria das aplicações Web.
+O Express https://expressjs.com/ (ou sua versão traduzida https://expressjs.com/pt-br/) é um framework bastante popular na criação de aplicações Web com o Node.js. É importante salientar que não é necessário utilizar um framework como o Express para desenvolver uma aplicação Web, as bibliotecas integradas ao Node.js já possuem todas as funcionalidades necessárias para isso. Entretanto, utilizar um framework torna o processo de desenvolvimento muito mais simples e eficiente, pois evitar que tenhamos que _reinventar a roda_ desenvolvendo funcionalidades que são comuns a maioria das aplicações Web.
 
 O framework, portanto, possui implementado um conjunto de funcionalidades que são comuns a maior parte das aplicações Web, a lista abaixo mostra apenas algumas dessas funcionalidades:
 
@@ -148,3 +148,22 @@ O Express permite que os _Middlewares_ sejam atribuídos a todas as requisiçõe
 #### Instalação e primeiro middleware
 
 Commit: [6515cc07399d0b961aa4e45139e6ccc9c4995b68](https://github.com/edupsousa/dw2-declaracoes-prova/tree/6515cc07399d0b961aa4e45139e6ccc9c4995b68)
+
+A instalação do Express é feita por meio do comando `npm install -P express`. O módulo `express` exporta uma função, a qual é responsável pela criação da aplicação Express. Para a documentação da aplicação Express clique [aqui](https://expressjs.com/pt-br/4x/api.html#app).
+
+```js
+const express = require('express');
+const app = express();
+```
+
+A aplicação Express possui uma série de funções para o registro de _Middlewares_ no tratamento de requisições. A principal função para registrar _Middlewares_ é chamada `use`.
+
+A função `use` pode receber como parâmetro somente o _Middleware_ ou um caminho de URL e o _Middleware_. Caso seja passado somente o _Middleware_ então ele será aplicado a qualquer requisição recebida, caso a URL seja informada então ele será aplicado somente nas requisições para a URL informada, independente do método HTTP utilizado.
+
+```js
+app.use('/', (req, res, next) => {
+  res.send('Mensagem...');
+});
+```
+
+No exemplo acima o Middleware será aplicado a qualquer requisição para a URL /. Este Middleware envia um texto para o navegador e encerra sua execução, dessa forma nenhum outro Middleware é executado após ele.
