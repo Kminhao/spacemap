@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/edupsousa/dw2-declaracoes-prova/issues"
   },
-  "homepage": "https://github.com/edupsousa/dw2-declaracoes-prova#readme"
+  "homepage": "https://github.com/edupsousa/dw2-declaracoes-prova#readme",
+  "dependencies": {
+    "debug": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }
