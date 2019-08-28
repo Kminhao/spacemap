@@ -83,6 +83,8 @@ Você encontra a documentação do npx [aqui](https://www.npmjs.com/package/npx)
 
 #### Biblioteca debug
 
+Commit: [9be9ee0d6c15a24a73dcf513be40362b26351279](https://github.com/edupsousa/dw2-declaracoes-prova/tree/9be9ee0d6c15a24a73dcf513be40362b26351279)
+
 A biblioteca debug permite inserir mensagens em nosso código para serem exibidas no console de forma muito semelhante a função `console.log`. Porém, ao utilizar a biblioteca debug você pode definir quando essas mensagens devem ou não serem exibidas por meio da variável de ambiente DEBUG. Boiou? Calma que você já vai entender! ;)
 
 O primeiro passo é importarmos a biblioteca, isso é feito usando a função require como sempre. Só que dessa vez você vai perceber que a chamada para o require está com um conjunto de parênteses e um argumento a mais, assim:
@@ -109,3 +111,40 @@ set DEBUG=servidor & npx nodemon
 ```
 
 No caso nós definimos que somente as mensagens do _namespace_ servidor serão mostradas. Você pode definir vários _namespaces_ diferentes separados por vírgula, ou usar asterisco para mostrar todos. Saiba, porém, que diversas bibliotecas utilizam a biblioteca debug, e se você mostrar tudo (\*) as mensagens dessas bibliotecas também serão mostradas. Dẽ uma olhada na documentação da biblioteca debug [aqui](https://www.npmjs.com/package/debug).
+
+### Express
+
+O Express https://expressjs.com/ é um framework bastante popular na criação de aplicações Web com o Node.js. É importante salientar que não é necessário utilizar um framework como o Express para desenvolver uma aplicação Web, as bibliotecas integradas ao Node.js já possuem todas as funcionalidades necessárias para isso. Entretanto, utilizar um framework torna o processo de desenvolvimento muito mais simples e eficiente, pois evitar que tenhamos que _reinventar a roda_ desenvolvendo funcionalidades que são comuns a maioria das aplicações Web.
+
+O framework, portanto, possui implementado um conjunto de funcionalidades que são comuns a maior parte das aplicações Web, a lista abaixo mostra apenas algumas dessas funcionalidades:
+
+- Roteamento de Requisições: definir quem irá tratar e responder a requisições para diferentes URLs e diferentes métodos do protocolo HTTP.
+- Tratamento de Cookies: obter os cookies do navegador do usuário a cada requisição e torná-los disponível para a aplicação.
+- Definir cabeçalhos e status das respostas enviadas para o usuário: definir o código de status correto para requisições bem sucedidas, redirecionamentos e erros.
+
+Portanto, apesar de não ser estritamente necessário, é praticamente impensável construir uma aplicação Web (a não ser aquelas muito simples) sem o uso de um framework como o Express.
+
+#### Middlewares
+
+Quando criamos nosso primeiro servidor Web utilizando apenas a biblioteca HTTP vimos que nossas requisições eram tratadas por uma função chamada _RequestListener_, essa função recebe a requisição do usuário e deve gerar a resposta apropriada para essa requisição.
+
+O Express trabalha de forma bastante parecida, teremos funções responsáveis por tratar as requisições e gerar as respostas para o usuário. No Express essas funções são chamadas de _Middleware_, essa função possui uma assinatura bastante semelhante ao _RequestListener_ recebendo como os dois primeiros parâmetros objetos que representam a requisição recebida e a resposta que será enviada, porém, o _Middleware_ possui um terceiro parâmetro chamado _next_. Esse parâmetro é utilizado para chamar o próximo _Middleware_ responsável pelo tratamento da requisição.
+
+Assim, uma única requisição pode ser tratada por diversos _Middlewares_ em sequência, até que um _Middleware_ envie a resposta ao usuário e encerre a cadeia de _Middlewares_ sem chamar a função _next_.
+
+Por exemplo, suponha que o usuário acessou uma página para trocar sua senha no sistema, preencheu o formulário com a nova senha e enviou para o servidor. Em uma aplicação desenvolvida com o framework Express essa requisição seria tratada por diversos Middlewares em uma sequência parecida com essa:
+
+1. Um _Middleware_ lê os cabeçalhos da requisição e extrai os cookies.
+1. Outro _Middleware_ busca uma sessão no banco de dados a partir dos cookies extraídos na primeira etapa, ao encontrar carrega os dados do usuário que abriu a sessão.
+1. Em seguida um _Middleware_ obtém os dados do formuário enviado e disponibiliza para os demais.
+1. Um _Middleware_ autentica se os dados do formulário pertencem ao usuário que abriu a sessão.
+1. Um _Middleware_ realiza a alteração da senha.
+1. Um último _Middleware_ envia uma página em resposta ao usuário.
+
+No exemplo acima, cada um dos _Middlewares_ (exceto o último) desempenharia sua funcionalidade e chamaria a função `next` para executar o próximo _Middleware_. Perceba que os primeiros _Middlewares_ podem ser reaproveitados para outras partes do sistema, e apenas os últimos tratam essa requisição específica. O reaproveitamento de código é uma das grandes vantagens no uso de _Middlewares_.
+
+O Express permite que os _Middlewares_ sejam atribuídos a todas as requisições recebidas (caso dos primeiros no exemplo), ou a requisições específicas, de acordo com a URL requisitada ou o método HTTP utilizado.
+
+#### Instalação e primeiro middleware
+
+Commit: [6515cc07399d0b961aa4e45139e6ccc9c4995b68](https://github.com/edupsousa/dw2-declaracoes-prova/tree/6515cc07399d0b961aa4e45139e6ccc9c4995b68)
