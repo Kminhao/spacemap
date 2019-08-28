@@ -80,3 +80,32 @@ A ferramenta nodemon monitora os arquivos do projeto e reinicia o Node.JS sempre
 O comando `npx` permite executar as ferramentas instaladas com o `npm` no diretório do nosso projeto sem que seja necessário configurar o caminho para os executáveis (variável PATH) dessas ferramentas.
 
 Você encontra a documentação do npx [aqui](https://www.npmjs.com/package/npx).
+
+#### Biblioteca debug
+
+A biblioteca debug permite inserir mensagens em nosso código para serem exibidas no console de forma muito semelhante a função `console.log`. Porém, ao utilizar a biblioteca debug você pode definir quando essas mensagens devem ou não serem exibidas por meio da variável de ambiente DEBUG. Boiou? Calma que você já vai entender! ;)
+
+O primeiro passo é importarmos a biblioteca, isso é feito usando a função require como sempre. Só que dessa vez você vai perceber que a chamada para o require está com um conjunto de parênteses e um argumento a mais, assim:
+
+```js
+const debug = require('debug')('servidor');
+```
+
+Isso porque a biblioteca debug exporta uma função, que é usada para definir o _namespace_ das mensagens que serão exibidas no console. _Namespace_ é só um identificador que podemos usar para saber de onde vem as mensagens que estão sendo exibidas no console, e também para filtrarmos quais mensagens devem ser exibidas ou não. O código acima poderia ser reescrito de forma didática assim:
+
+```js
+const bibliotecaDebug = require('debug');
+const debug = bibliotecaDebug('servidor');
+```
+
+O resultado é o mesmo, porém a primeira forma é mais sucinta e é a forma utilizada normalmente, então não tem jeito, você vai precisar se acostumar.
+
+Depois que a função `debug` foi criada e configurada nós podemos utilizá-la da mesma forma que a função `console.log`, simplesmente chamando `debug('mensagem')`. Se você executar o código agora, provavelmente nenhuma mensagem será exibida. Para exibir você deve definir a variável de ambiente DEBUG informando de quais _namespaces_ você quer ver as mensagens. No Prompt de Comando do Windows você pode fazer assim:
+
+```
+set DEBUG=servidor & node index.js
+//ou
+set DEBUG=servidor & npx nodemon
+```
+
+No caso nós definimos que somente as mensagens do _namespace_ servidor serão mostradas. Você pode definir vários _namespaces_ diferentes separados por vírgula, ou usar asterisco para mostrar todos. Saiba, porém, que diversas bibliotecas utilizam a biblioteca debug, e se você mostrar tudo (\*) as mensagens dessas bibliotecas também serão mostradas. Dẽ uma olhada na documentação da biblioteca debug [aqui](https://www.npmjs.com/package/debug).
