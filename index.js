@@ -1,14 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
-const debug = require('debug')('servidor');
 
 const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
 app.use(morgan('dev'));
 
 app.get('/', (req, res, next) => {
-  debug('Executando Middleware /');
-  res.send('Olá no Navegador!');
+  res.render('index', {
+    titulo: 'Gerador de Declarações de Prova'
+  });
 });
 
 app.use((req, res, next) => {
