@@ -179,3 +179,21 @@ Nesse commit criamos um Middleware para realizar o log das requisições no cons
 (b) O tratamento da requisição não é finalizado nesse Middleware, que apenas realiza o log da requisição, o envio da resposta ao navegador é delegado para os Middlewares subsequentes.
 
 (c) Como este é o primeiro Middleware registrado no nosso código ele será executado para todas as requisições recebidas. Caso o Middleware tivesse sido registrado após o Middleware para / ele não seria executado no caso de requisições para /, pois este Middleware não chama o método `next()`.
+
+#### Application.use() X Application.METHOD()
+
+Commit: [708e81c72d08afbb33257be85e2949c6e5a02a79](https://github.com/edupsousa/dw2-declaracoes-prova/tree/708e81c72d08afbb33257be85e2949c6e5a02a79)
+
+Até aqui utilizamos somente a função `use()` para registro de Middlewares, entretanto essa função tem algumas características que não são adequadas para todos os usos.
+
+Quando especificamos uma URL para a função _use_ como em `use('/', ...)` essa URL é determinada de maneira parcial, ou seja, esse Middleware será aplicado a qualquer requisição iniciada por `/`, como em http://localhost:3000/erro. Outra característica dessa função é que ela será aplicada a requisições independentemente do método HTTP utilizado, como GET ou POST.
+
+Para tornar nossos Middlewares mais específicos podemos utilizar outras funções do objeto Application baseadas no método HTTP desejado, como GET ou POST, que são mapeados para as funções `Application.get()` e `Application.post()`, respectivamente.
+
+Essas funções, além de especificarem o método HTTP para o qual as requisições serão tratadas, também tem como característica o uso de URLs de forma exata, ou seja, o Middleware registrado com a chamada `app.get('/', ...)` irá tratar apenas requisições para / e não mais URLs iniciadas por /.
+
+```js
+app.get('/', (req, res, next) => {
+  ...
+});
+```
