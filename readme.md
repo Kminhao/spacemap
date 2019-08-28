@@ -12,7 +12,7 @@ Cada commit neste repositório exemplificará uma tarefa do desenvolvimento do a
 
 #### Arquivo .gitignore
 
-Ref: 58129a8e9a1750b16eedc46a47619b44408eabf2
+Commit: [58129a8e9a1750b16eedc46a47619b44408eabf2](https://github.com/edupsousa/dw2-declaracoes-prova/tree/58129a8e9a1750b16eedc46a47619b44408eabf2)
 
 O arquivo .gitignore especifíca os arquivos e diretórios que não devem ser adicionados ao repositório git. Uma boa prática é utilizar um dos modelos fornecidos pelo próprio github que podem ser encontrados [aqui](https://github.com/github/gitignore).
 
