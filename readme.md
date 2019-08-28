@@ -167,3 +167,15 @@ app.use('/', (req, res, next) => {
 ```
 
 No exemplo acima o Middleware será aplicado a qualquer requisição para a URL /. Este Middleware envia um texto para o navegador e encerra sua execução, dessa forma nenhum outro Middleware é executado após ele.
+
+#### Implementando um Middleware para log de requisições
+
+Commit: [ee829de448271627d5440bb2d746125862597509](https://github.com/edupsousa/dw2-declaracoes-prova/tree/ee829de448271627d5440bb2d746125862597509)
+
+Nesse commit criamos um Middleware para realizar o log das requisições no console, aqui é importante percebermos alguns detalhes da implementação: (a) não foi especificada uma URL no registro do Middleware, (b) o método `next()` é chamado ao fim do Middleware e por fim (c) a posição onde o Middleware é especificado no código, antes do Middleware registrado para o tratamento das requisições para a URL /. Esses detalhes tem as seguintes implicações:
+
+(a) O Middleware será executado para todas as requisições recebidas, independente do método ou da URL especificadas.
+
+(b) O tratamento da requisição não é finalizado nesse Middleware, que apenas realiza o log da requisição, o envio da resposta ao navegador é delegado para os Middlewares subsequentes.
+
+(c) Como este é o primeiro Middleware registrado no nosso código ele será executado para todas as requisições recebidas. Caso o Middleware tivesse sido registrado após o Middleware para / ele não seria executado no caso de requisições para /, pois este Middleware não chama o método `next()`.
