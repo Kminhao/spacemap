@@ -197,3 +197,15 @@ app.get('/', (req, res, next) => {
   ...
 });
 ```
+
+#### Implementando Middleware para URLs desconhecidas (Erro 404)
+
+Commit: [7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6](https://github.com/edupsousa/dw2-declaracoes-prova/tree/7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6)
+
+Quando alteramos o registro do Middleware da função `use` para a função `get` nós deixamos de tratar as requisições recebidas para URLs não registradas. Para implementarmos um Middleware que trate essas requisições basta o registrarmos após todos os demais Middlewares utilizando a função `use` sem passarmos um caminho como parâmetro, assim, todas as requisições não tratadas pelo Middleware anteriores serão tratadas por esse Middleware.
+
+```js
+app.use((req, res, next) => {
+  res.sendStatus(404);
+});
+```
