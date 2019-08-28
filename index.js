@@ -15,4 +15,8 @@ app.get('/', (req, res, next) => {
   res.send('Olá no Navegador!');
 });
 
+app.use((req, res, next) => {
+  res.sendStatus(404);
+});
+
 app.listen(3000);
