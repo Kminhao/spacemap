@@ -10,7 +10,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
   debug('Executando Middleware /');
   res.send('Olá no Navegador!');
 });
