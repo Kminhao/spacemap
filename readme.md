@@ -8,7 +8,7 @@ Este aplicativo será desenvolvido durante a disciplina DW2 para exemplificar o 
 
 Cada commit neste repositório exemplificará uma tarefa do desenvolvimento do aplicativo, desde a configuração inicial do ambiente. As diversas etapas serão descritas neste readme com os links para a documentação e guias relacionados.
 
-## Commits
+## Passos
 
 #### Arquivo .gitignore
 
@@ -58,3 +58,17 @@ const server = http.createServer((req, res) => {
 ```
 
 Esse callback é chamado de `requestListener`, a cada nova requisição do navegador essa função é executada para gerar uma nova resposta para o navegador, mais informações sobre o assunto [aqui](https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_createserver_options_requestlistener). Além disso vale a pena dar uma olhada nesse tutorial em português sobre o assunto no [blog da Caelum](https://blog.caelum.com.br/como-criar-um-servidor-http-com-nodejs/).
+
+#### Instalando dependências
+
+Commit: [cfb316358827f12d18715a616cffef50f7d71188](https://github.com/edupsousa/dw2-declaracoes-prova/tree/cfb316358827f12d18715a616cffef50f7d71188)
+
+O Node.js é uma ferramenta muito popular, isso pode ser visto pela número de bibliotecas e ferramentas criadas pela comunidade para facilitar o desenvolvimento com ele. Para pesquisar por ferramentas e bibliotecas acesse o site do NPM https://www.npmjs.com/.
+
+Neste commit nós instalaremos duas ferramentas que irão auxiliar no processo de desenvolvimento, a primeira delas é o [nodemon](https://www.npmjs.com/package/nodemon) e a outra é a biblioteca [debug](https://www.npmjs.com/package/debug).
+
+Ambas as ferramentas irão auxiliar no processo de desenvolvimento, o `nodemon` será utilizado para monitorar as alterações no código e reiniciar o Node.js sempre que alguma alteração for detectada, evitando que precisemos fazer isso manualmente. Já a biblioteca `debug` será utilizada para gerar mensagens no console que auxiliam na detecção de erros.
+
+Essas duas ferramentas são instaladas de forma ligeiramente diferente, o `nodemon` com o comando `npm install -D nodemon` e a `debug` com o comando `npm install -P debug`. Perceba a diferença das flags `-P` e `-D`, essas flags determinam em quais ambientes as bibliotecas devem ser instaladas. No caso do `nodemon` ele foi instalado com a flag `-D` e por isso estará disponível somente no ambiente de desenvolvimento. Já o `debug` foi instalado com a flag `-P` e por isso estará disponível nos ambientes de desenvolvimento e também de produção. Para mais informações sobre o `npm install` e suas flags consulte a documentação [aqui](https://docs.npmjs.com/cli/install).
+
+Você pode ter notado que com essa instalação o arquivo `package.json` foi alterado e um novo arquivo chamado `package-lock.json` foi criado, esses arquivos armazenam informações sobre as dependências do nosso projeto e essas alterações dizem quais bibliotecas e quais versões foram instaladas, facilitando que qualquer pessoa possa copiar nosso projeto e instalar todas as dependências necessárias. As bibliotecas por sua vez são instaladas no diretório `node_modules`, esse diretório não é salvo para nosso repositório devido as configurações do arquivo `.gitignore`.
