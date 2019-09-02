@@ -12,7 +12,7 @@ Cada commit neste repositório exemplificará uma tarefa do desenvolvimento do a
 
 #### Arquivo .gitignore
 
-Commit: [58129a8e9a1750b16eedc46a47619b44408eabf2](https://github.com/edupsousa/dw2-declaracoes-prova/tree/58129a8e9a1750b16eedc46a47619b44408eabf2)
+Commit: [58129a8e9a1750b16eedc46a47619b44408eabf2](https://github.com/edupsousa/dw2-declaracoes-prova/commit/58129a8e9a1750b16eedc46a47619b44408eabf2)
 
 O arquivo .gitignore especifíca os arquivos e diretórios que não devem ser adicionados ao repositório git. Uma boa prática é utilizar um dos modelos fornecidos pelo próprio github que podem ser encontrados [aqui](https://github.com/github/gitignore).
 
@@ -22,7 +22,7 @@ A documentação oficial você encontra [aqui](https://git-scm.com/docs/gitignor
 
 #### npm init - criar arquivo package.json
 
-Commit: [aeb92266b7927acd1f05b4ee9ae7226a2d4189cf](https://github.com/edupsousa/dw2-declaracoes-prova/tree/aeb92266b7927acd1f05b4ee9ae7226a2d4189cf)
+Commit: [aeb92266b7927acd1f05b4ee9ae7226a2d4189cf](https://github.com/edupsousa/dw2-declaracoes-prova/commit/aeb92266b7927acd1f05b4ee9ae7226a2d4189cf)
 
 O arquivo package.json contém as configurações do projeto para uso com a ferramenta `npm`, neste arquivo serão registradas as dependências do projeto, comandos para execução e testes do projetos, etc. Para maiores informações sobre o arquivo `package.json` clique [aqui](https://docs.npmjs.com/files/package.json).
 
@@ -30,7 +30,7 @@ Para criar esse arquivo de forma automatizada basta executar o comando `npm init
 
 #### Primeiro servidor Web com Node.js
 
-Commit: [0b4ab52eefb269c59a06e51421adb6b9ed1e06bd](https://github.com/edupsousa/dw2-declaracoes-prova/tree/0b4ab52eefb269c59a06e51421adb6b9ed1e06bd)
+Commit: [0b4ab52eefb269c59a06e51421adb6b9ed1e06bd](https://github.com/edupsousa/dw2-declaracoes-prova/commit/0b4ab52eefb269c59a06e51421adb6b9ed1e06bd)
 
 Neste commit nós criamos o nosso primeiro servidor Web com Node.js. Para quem está acostumado com outras linguagens voltadas ao desenvolvimento Web, como PHP, uma das maiores diferenças é que com o Node.js é sua responsabilidade criar e iniciar o servidor Web, isso é feito por meio da biblioteca http do Node.js que nós importamos com a linha:
 
@@ -61,7 +61,7 @@ Esse callback é chamado de `requestListener`, a cada nova requisição do naveg
 
 #### Instalando dependências
 
-Commit: [cfb316358827f12d18715a616cffef50f7d71188](https://github.com/edupsousa/dw2-declaracoes-prova/tree/cfb316358827f12d18715a616cffef50f7d71188)
+Commit: [cfb316358827f12d18715a616cffef50f7d71188](https://github.com/edupsousa/dw2-declaracoes-prova/commit/cfb316358827f12d18715a616cffef50f7d71188)
 
 O Node.js é uma ferramenta muito popular, isso pode ser visto pela número de bibliotecas e ferramentas criadas pela comunidade para facilitar o desenvolvimento com ele. Para pesquisar por ferramentas e bibliotecas acesse o site do NPM https://www.npmjs.com/.
 
@@ -83,7 +83,7 @@ Você encontra a documentação do npx [aqui](https://www.npmjs.com/package/npx)
 
 #### Biblioteca debug
 
-Commit: [9be9ee0d6c15a24a73dcf513be40362b26351279](https://github.com/edupsousa/dw2-declaracoes-prova/tree/9be9ee0d6c15a24a73dcf513be40362b26351279)
+Commit: [9be9ee0d6c15a24a73dcf513be40362b26351279](https://github.com/edupsousa/dw2-declaracoes-prova/commit/9be9ee0d6c15a24a73dcf513be40362b26351279)
 
 A biblioteca debug permite inserir mensagens em nosso código para serem exibidas no console de forma muito semelhante a função `console.log`. Porém, ao utilizar a biblioteca debug você pode definir quando essas mensagens devem ou não serem exibidas por meio da variável de ambiente DEBUG. Boiou? Calma que você já vai entender! ;)
 
@@ -147,7 +147,7 @@ O Express permite que os _Middlewares_ sejam atribuídos a todas as requisiçõe
 
 #### Instalação e primeiro middleware
 
-Commit: [6515cc07399d0b961aa4e45139e6ccc9c4995b68](https://github.com/edupsousa/dw2-declaracoes-prova/tree/6515cc07399d0b961aa4e45139e6ccc9c4995b68)
+Commit: [6515cc07399d0b961aa4e45139e6ccc9c4995b68](https://github.com/edupsousa/dw2-declaracoes-prova/commit/6515cc07399d0b961aa4e45139e6ccc9c4995b68)
 
 A instalação do Express é feita por meio do comando `npm install -P express`. O módulo `express` exporta uma função, a qual é responsável pela criação da aplicação Express. Para a documentação da aplicação Express clique [aqui](https://expressjs.com/pt-br/4x/api.html#app).
 
@@ -170,7 +170,7 @@ No exemplo acima o Middleware será aplicado a qualquer requisição para a URL 
 
 #### Implementando um Middleware para log de requisições
 
-Commit: [ee829de448271627d5440bb2d746125862597509](https://github.com/edupsousa/dw2-declaracoes-prova/tree/ee829de448271627d5440bb2d746125862597509)
+Commit: [ee829de448271627d5440bb2d746125862597509](https://github.com/edupsousa/dw2-declaracoes-prova/commit/ee829de448271627d5440bb2d746125862597509)
 
 Nesse commit criamos um Middleware para realizar o log das requisições no console, aqui é importante percebermos alguns detalhes da implementação: (a) não foi especificada uma URL no registro do Middleware, (b) o método `next()` é chamado ao fim do Middleware e por fim (c) a posição onde o Middleware é especificado no código, antes do Middleware registrado para o tratamento das requisições para a URL /. Esses detalhes tem as seguintes implicações:
 
@@ -182,7 +182,7 @@ Nesse commit criamos um Middleware para realizar o log das requisições no cons
 
 #### Application.use() X Application.METHOD()
 
-Commit: [708e81c72d08afbb33257be85e2949c6e5a02a79](https://github.com/edupsousa/dw2-declaracoes-prova/tree/708e81c72d08afbb33257be85e2949c6e5a02a79)
+Commit: [708e81c72d08afbb33257be85e2949c6e5a02a79](https://github.com/edupsousa/dw2-declaracoes-prova/commit/708e81c72d08afbb33257be85e2949c6e5a02a79)
 
 Até aqui utilizamos somente a função `use()` para registro de Middlewares, entretanto essa função tem algumas características que não são adequadas para todos os usos.
 
@@ -200,7 +200,7 @@ app.get('/', (req, res, next) => {
 
 #### Implementando Middleware para URLs desconhecidas (Erro 404)
 
-Commit: [7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6](https://github.com/edupsousa/dw2-declaracoes-prova/tree/7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6)
+Commit: [7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6](https://github.com/edupsousa/dw2-declaracoes-prova/commit/7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6)
 
 Quando alteramos o registro do Middleware da função `use` para a função `get` nós deixamos de tratar as requisições recebidas para URLs não registradas. Para implementarmos um Middleware que trate essas requisições basta o registrarmos após todos os demais Middlewares utilizando a função `use` sem passarmos um caminho como parâmetro, assim, todas as requisições não tratadas pelo Middleware anteriores serão tratadas por esse Middleware.
 
@@ -212,7 +212,7 @@ app.use((req, res, next) => {
 
 #### Usando Middlewares de bibliotecas externas (morgan)
 
-Commit: [67826717acc1dc2febed27edac705bbb427618cb](https://github.com/edupsousa/dw2-declaracoes-prova/tree/67826717acc1dc2febed27edac705bbb427618cb)
+Commit: [67826717acc1dc2febed27edac705bbb427618cb](https://github.com/edupsousa/dw2-declaracoes-prova/commit/67826717acc1dc2febed27edac705bbb427618cb)
 
 Nas etapas anteriores desenvolvemos um Middleware simples para realizar o log das requisições recebidas, entretanto, existem um pacote disponível no repositório do NPM, chamado [morgan](https://www.npmjs.com/package/morgan), que desempenha essa mesma função, com recursos muito além daqueles que implementamos.
 
@@ -230,6 +230,8 @@ app.use(morgan('dev'));
 A string passada como parâmetro para a função morgan determina o formato do log gerado, para mais informações consulte a documentação [aqui](https://www.npmjs.com/package/morgan).
 
 #### Adicionando uma biblioteca para templates (ejs)
+
+Commit: [fccdf79e1eba3384595280107ba87d686459bea4](https://github.com/edupsousa/dw2-declaracoes-prova/commit/fccdf79e1eba3384595280107ba87d686459bea4)
 
 A biblioteca EJS permite a criação de páginas HTML a partir de templates construídos com a linguagem JavaScript, para utilizar a biblioteca o primeiro passo é realizar a instalação com o comando:
 
