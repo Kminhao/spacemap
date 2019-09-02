@@ -228,3 +228,43 @@ app.use(morgan('dev'));
 ```
 
 A string passada como parâmetro para a função morgan determina o formato do log gerado, para mais informações consulte a documentação [aqui](https://www.npmjs.com/package/morgan).
+
+#### Adicionando uma biblioteca para templates (ejs)
+
+A biblioteca EJS permite a criação de páginas HTML a partir de templates construídos com a linguagem JavaScript, para utilizar a biblioteca o primeiro passo é realizar a instalação com o comando:
+
+```bash
+npm install -P ejs
+```
+
+Feito isso é preciso configurar a aplicação criada com o Express para utilizar essa biblioteca, isso é feito logo após a criação do objeto app com o método `app.set('view engine', 'ejs')`, outra configuração bastante comum é a definição do diretório onde os templates serão armazenados, mais uma vez com o método `set`, porém, passando como primeiro parâmetro a string `'views'` e como segundo parâmetro o caminho para o diretório relativo ao diretório raiz da aplicação. Para mais informações sobre o método `set` e outras configurações do Express [clique aqui](https://expressjs.com/en/api.html#app.set).
+
+```javascript
+const app = express();
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+```
+
+Nessa etapa criamos um template na pasta _views_ chamado _index.ejs_, esse template cria uma página HTML simples, mostrando a variável `titulo` no título da página e em um elemento h1 no corpo da página. Para mais informações sobre como incluir código JavaScript na página [clique aqui](https://ejs.co/).
+
+```html
+<html>
+  <head>
+    <title><%= titulo %></title>
+  </head>
+  <body>
+    <h1><%= titulo %></h1>
+  </body>
+</html>
+```
+
+Para exibir o template utilizamos o método _render_ do objeto _response_ passado pelo Express para nosso Middleware. Esse método recebe dois parâmetros, o nome do template e um objeto que será passado ao template. As propriedades desse objeto constituem as variáveis que estarão disponíveis no template:
+
+```javascript
+app.get('/', (req, res, next) => {
+  res.render('index', {
+    titulo: 'Gerador de Declarações de Prova'
+  });
+});
+```
