@@ -379,3 +379,46 @@ app.post('/login', (req, res, next) => {
   ...
 });
 ```
+
+### 17. Arquitetura MVC
+
+A arquitetura MVC é uma das mais comuns na organização do código das aplicações WEB. Essa arquitetura divide a aplicação em 3 camadas distintas: Model, View e Controller. Cada uma dessas camadas tem responsabilidades distintas, os componentes da camada View devem atuar exclusivamente nas tarefas de exibição da aplicação, em nosso caso essa camada será formada pelos templates desenvolvidos com a biblioteca EJS. A camada Model se ocupa da representação/persistência dos dados da aplicação e da lógica de negócio associada a eles, por fim a camada Controller faz a ligação entre as duas camadas anteriores, recebendo as requisições do usuário, obtendo os dados necessários da camada Model e então repassando-os para que a camada View faça a exibição.
+
+O primeiro passo será dividir o nosso código em diretórios separados de acordo com a camada onde o código atua. O diretório `/views` já existe e contém os templates que criamos com o EJS, assim devemos criar os diretórios `/controllers` e `/models`.
+
+#### Controllers
+
+O código dos Controllers será basicamente o mesmo código que até agora utilizamos nos middlewares, devemos então copiar os middlewares existentes para o diretório `controllers` e exportar cada middleware para que possa ser utilizado em nossos `routers`. Exemplo:
+
+```js
+/* /controllers/provasController.js */
+
+exports.getProva = (req, res, next) => { ... }
+exports.getProvas = (req, res, next) => { ... }
+exports.postProva = (req, res, next) => { ... }
+```
+
+```js
+/* /routes/provasRouter.js */
+
+const router = express.Router();
+const controller = require('../controllers/provasController.js');
+
+router.get('/prova', controller.getProva);
+router.get('/provas', controller.getProvas);
+router.post('/prova', controller.postProva);
+```
+
+Alguns detalhes importantes devem ser notados no exemplo acima, em primeiro lugar a forma de exportarmos as funções no controller é diferente do que fizemos até agora, isso pois precisamos exportar diversas funções em um mesmo arquivo, assim ao invés de definir o objeto `module.exports` para o objeto que desejamos exportas, nós utilizamos somente o objeto `exports`, atribuindo cada função a uma propriedade desse objeto.
+
+Outro ponto importante é que no roteador nós **_não invocamos_** as funções (middlewares! Nós apenas passamos uma referência para cada uma das funções e a invocação é feita no momento que a requisição for recebida.
+
+#### Models
+
+No diretório `/models` ficará o código responsável pelos dados de nossa aplicação, em um primeiro momento iremos criar apenas uma classe para representar o objeto enviado por meio do formulário, e os métodos responsáveis por salvar este objeto e obter uma lista dos objetos salvos.
+
+Essa implementação segue um padrão chamado _ActiveRecord_, no qual a instância do objeto representa um registro do banco de dados e implementa os métodos necessários para persistir esse objeto no banco de dados. A classe por sua vez possui os métodos responsáveis por consultar e obter as instância do objeto a partir do banco de dados.
+
+Como ainda não temos uma conexão com o banco de dados o nosso código irá salvar os objetos em um arquivo JSON, futuramente iremos implementar a persistência com o banco de dados.
+
+Para visualizar o código do nosso _ActiveRecord_ com o armazenamento em arquivo [clique aqui](https://github.com/edupsousa/dw2-declaracoes-prova/blob/a8a8cf7484557c4e5748661e5ef2f23d2be25a9d/models/provaModel.js).
