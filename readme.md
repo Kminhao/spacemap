@@ -1,4 +1,4 @@
-# Declarações de Prova
+# Desenvolvimento Web 2 - Aplicação Web com Node.js+Express
 
 Protótipo de uma aplicação Node.js + Express desenvolvido como exemplo na disciplina Desenvolvimento Web 2 do curso de Análise e Desenvolvimento de Sistemas do [IFSP - Campus Caraguatatuba](https://www.ifspcaraguatatuba.edu.br/).
 
