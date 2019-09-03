@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Provas</title>
+</head>
+<body>
+    <h1>Provas Cadastradas</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Disciplina</td>
+                <td>Professor</td>
+                <td>Data</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let prova of provas) { %>
+                <tr>
+                    <td><%= prova.disciplina %></td>
+                    <td><%= prova.professor %></td>
+                    <td><%= prova.dataProva %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <a href="/provas/nova">Nova Prova</a>
+</body>
+</html>
