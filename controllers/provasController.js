@@ -11,11 +11,14 @@ exports.postNovaProva = (req, res, next) => {
 };
 
 exports.getNovaProva = (req, res, next) => {
-  res.render('provas/novaProva');
+  res.render('provas/novaProva', {
+    linkAtivo: 'novaProva'
+  });
 };
 
 exports.getProvas = (req, res, next) => {
   res.render('provas/listaProvas', {
+    linkAtivo: 'listaProvas',
     provas: Prova.listar()
   });
 };
