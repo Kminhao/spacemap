@@ -340,3 +340,42 @@ POST /provas/nova
 ```
 
 Uma aplicação pode possuir diversos routers, é uma boa prática que cada novo router seja criado em um arquivo separado, em nosso caso utilizaremos o diretório `/routes` para cada novo router. Quando um router é criado em um arquivo separado basta exportá-lo por meio da diretiva `module.exports = router`, e então importá-lo no arquivo onde definimos nossa aplicação.
+
+### 16. Tratamento de dados enviados via formulário com o método POST
+
+Quando um formulário de uma página HTML submete os dados para a aplicação utilizando o método POST, esses dados são geralmente enviados no corpo da requisição em um formato como `chave1=valor&chave2=valor` com os caracteres especiais convertidos para o formato de codificação de URLs (ex. espaços se tornam `%20`). Para saber mais [clique aqui](https://dev.to/sidthesloth92/understanding-html-form-encoding-url-encoded-and-multipart-forms-3lpa).
+
+Para que o Express seja capaz de tratar esses dados nós devemos utilizar um middleware externo chamado `body-parser`. Assim, o primeiro passo é instalar esse middleware:
+
+```
+npm install -P body-parser
+```
+
+Depois de instalado podemos utilizar o middleware registrando-o logo após a criação do nosso objeto `Application` do Express:
+
+```js
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+```
+
+A biblioteca `body-parser` possui diversas funções, cada qual capaz de tratar um tipo específico de dados enviados na requisição. Em nosso caso utilizaremos apenas o formato urlencoded por enquanto, se estivessemos construindo uma API REST precisaríamos registrar também o middleware provido pelo método `json()` para tratar dados enviados nesse formato. A documentação do body-parser está disponível [aqui](https://www.npmjs.com/package/body-parser).
+
+É importante que o registro desse middleware seja feito antes de qualquer outro que precise utilizar os dados enviado, pois só após sua execução os dados se tornam disponíveis para os demais middlewares no objeto `req.body`. Exemplo:
+
+```html
+<form action="/login" method="post">
+  <input type="text" name="usuario" />
+  <input type="text" name="senha" />
+</form>
+```
+
+```js
+app.post('/login', (req, res, next) => {
+  var usuario = req.body.usuario;
+  var senha = req.body.senha;
+  ...
+});
+```
