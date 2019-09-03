@@ -8,9 +8,9 @@ Este aplicativo será desenvolvido durante a disciplina DW2 para exemplificar o 
 
 Cada commit neste repositório exemplificará uma tarefa do desenvolvimento do aplicativo, desde a configuração inicial do ambiente. As diversas etapas serão descritas neste readme com os links para a documentação e guias relacionados.
 
-## Passos
+## Passo a Passo
 
-#### Arquivo .gitignore
+### 1. Arquivo .gitignore
 
 Commit: [58129a8e9a1750b16eedc46a47619b44408eabf2](https://github.com/edupsousa/dw2-declaracoes-prova/commit/58129a8e9a1750b16eedc46a47619b44408eabf2)
 
@@ -20,7 +20,7 @@ Um erro comum é adicionar os arquivos por engano antes da criação do arquivo 
 
 A documentação oficial você encontra [aqui](https://git-scm.com/docs/gitignore).
 
-#### npm init - criar arquivo package.json
+### 2. Iniciar o projeto NPM (npm init)
 
 Commit: [aeb92266b7927acd1f05b4ee9ae7226a2d4189cf](https://github.com/edupsousa/dw2-declaracoes-prova/commit/aeb92266b7927acd1f05b4ee9ae7226a2d4189cf)
 
@@ -28,7 +28,7 @@ O arquivo package.json contém as configurações do projeto para uso com a ferr
 
 Para criar esse arquivo de forma automatizada basta executar o comando `npm init`. Para maiores informações sobre o comando clique [aqui](https://docs.npmjs.com/cli/init).
 
-#### Primeiro servidor Web com Node.js
+### 3. Primeiro servidor Web com Node.js
 
 Commit: [0b4ab52eefb269c59a06e51421adb6b9ed1e06bd](https://github.com/edupsousa/dw2-declaracoes-prova/commit/0b4ab52eefb269c59a06e51421adb6b9ed1e06bd)
 
@@ -59,7 +59,7 @@ const server = http.createServer((req, res) => {
 
 Esse callback é chamado de `requestListener`, a cada nova requisição do navegador essa função é executada para gerar uma nova resposta para o navegador, mais informações sobre o assunto [aqui](https://nodejs.org/dist/latest-v12.x/docs/api/http.html#http_http_createserver_options_requestlistener). Além disso vale a pena dar uma olhada nesse tutorial em português sobre o assunto no [blog da Caelum](https://blog.caelum.com.br/como-criar-um-servidor-http-com-nodejs/).
 
-#### Instalando dependências
+### 4. Instalando dependências
 
 Commit: [cfb316358827f12d18715a616cffef50f7d71188](https://github.com/edupsousa/dw2-declaracoes-prova/commit/cfb316358827f12d18715a616cffef50f7d71188)
 
@@ -73,7 +73,7 @@ Essas duas ferramentas são instaladas de forma ligeiramente diferente, o `nodem
 
 Você pode ter notado que com essa instalação o arquivo `package.json` foi alterado e um novo arquivo chamado `package-lock.json` foi criado, esses arquivos armazenam informações sobre as dependências do nosso projeto e essas alterações dizem quais bibliotecas e quais versões foram instaladas, facilitando que qualquer pessoa possa copiar nosso projeto e instalar todas as dependências necessárias. As bibliotecas por sua vez são instaladas no diretório `node_modules`, esse diretório não é salvo para nosso repositório devido as configurações do arquivo `.gitignore`.
 
-#### Ferramenta `nodemon` e comando `npx`
+### 5. Ferramenta `nodemon` e comando `npx`
 
 A ferramenta nodemon monitora os arquivos do projeto e reinicia o Node.JS sempre que alguma mudança for detectada. Inicialmente nós não vamos precisar de nenhuma configuração para usar essa ferramenta, basta abrir um terminal no diretório do projeto e digitar `npx nodemon` para executar. Acesse o servidor no navegador e veja o resultado, depois altere a mensagem no arquivo `index.js` e salve, atualize a página do navegador e a mudança deverá aparecer pois o nodemon já reiniciou o Node.js. A documentação do nodemon você encontra [aqui](https://nodemon.io/).
 
@@ -81,7 +81,7 @@ O comando `npx` permite executar as ferramentas instaladas com o `npm` no diret�
 
 Você encontra a documentação do npx [aqui](https://www.npmjs.com/package/npx).
 
-#### Biblioteca debug
+### 6. Biblioteca debug
 
 Commit: [9be9ee0d6c15a24a73dcf513be40362b26351279](https://github.com/edupsousa/dw2-declaracoes-prova/commit/9be9ee0d6c15a24a73dcf513be40362b26351279)
 
@@ -112,7 +112,7 @@ set DEBUG=servidor & npx nodemon
 
 No caso nós definimos que somente as mensagens do _namespace_ servidor serão mostradas. Você pode definir vários _namespaces_ diferentes separados por vírgula, ou usar asterisco para mostrar todos. Saiba, porém, que diversas bibliotecas utilizam a biblioteca debug, e se você mostrar tudo (\*) as mensagens dessas bibliotecas também serão mostradas. Dẽ uma olhada na documentação da biblioteca debug [aqui](https://www.npmjs.com/package/debug).
 
-### Express
+### 7. Express
 
 O Express https://expressjs.com/ (ou sua versão traduzida https://expressjs.com/pt-br/) é um framework bastante popular na criação de aplicações Web com o Node.js. É importante salientar que não é necessário utilizar um framework como o Express para desenvolver uma aplicação Web, as bibliotecas integradas ao Node.js já possuem todas as funcionalidades necessárias para isso. Entretanto, utilizar um framework torna o processo de desenvolvimento muito mais simples e eficiente, pois evitar que tenhamos que _reinventar a roda_ desenvolvendo funcionalidades que são comuns a maioria das aplicações Web.
 
@@ -124,7 +124,7 @@ O framework, portanto, possui implementado um conjunto de funcionalidades que s�
 
 Portanto, apesar de não ser estritamente necessário, é praticamente impensável construir uma aplicação Web (a não ser aquelas muito simples) sem o uso de um framework como o Express.
 
-#### Middlewares
+### 8. Middlewares
 
 Quando criamos nosso primeiro servidor Web utilizando apenas a biblioteca HTTP vimos que nossas requisições eram tratadas por uma função chamada _RequestListener_, essa função recebe a requisição do usuário e deve gerar a resposta apropriada para essa requisição.
 
@@ -145,7 +145,7 @@ No exemplo acima, cada um dos _Middlewares_ (exceto o último) desempenharia sua
 
 O Express permite que os _Middlewares_ sejam atribuídos a todas as requisições recebidas (caso dos primeiros no exemplo), ou a requisições específicas, de acordo com a URL requisitada ou o método HTTP utilizado.
 
-#### Instalação e primeiro middleware
+### 9. Instalação e primeiro middleware
 
 Commit: [6515cc07399d0b961aa4e45139e6ccc9c4995b68](https://github.com/edupsousa/dw2-declaracoes-prova/commit/6515cc07399d0b961aa4e45139e6ccc9c4995b68)
 
@@ -168,7 +168,7 @@ app.use('/', (req, res, next) => {
 
 No exemplo acima o Middleware será aplicado a qualquer requisição para a URL /. Este Middleware envia um texto para o navegador e encerra sua execução, dessa forma nenhum outro Middleware é executado após ele.
 
-#### Implementando um Middleware para log de requisições
+### 10. Implementando um Middleware para log de requisições
 
 Commit: [ee829de448271627d5440bb2d746125862597509](https://github.com/edupsousa/dw2-declaracoes-prova/commit/ee829de448271627d5440bb2d746125862597509)
 
@@ -180,7 +180,7 @@ Nesse commit criamos um Middleware para realizar o log das requisições no cons
 
 (c) Como este é o primeiro Middleware registrado no nosso código ele será executado para todas as requisições recebidas. Caso o Middleware tivesse sido registrado após o Middleware para / ele não seria executado no caso de requisições para /, pois este Middleware não chama o método `next()`.
 
-#### Application.use() X Application.METHOD()
+### 11. Application.use() X Application.METHOD()
 
 Commit: [708e81c72d08afbb33257be85e2949c6e5a02a79](https://github.com/edupsousa/dw2-declaracoes-prova/commit/708e81c72d08afbb33257be85e2949c6e5a02a79)
 
@@ -198,7 +198,7 @@ app.get('/', (req, res, next) => {
 });
 ```
 
-#### Implementando Middleware para URLs desconhecidas (Erro 404)
+### 12. Implementando Middleware para URLs desconhecidas (Erro 404)
 
 Commit: [7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6](https://github.com/edupsousa/dw2-declaracoes-prova/commit/7dfff8818e25aedd301ffa0da7e7a93f8fd0c3f6)
 
@@ -210,7 +210,7 @@ app.use((req, res, next) => {
 });
 ```
 
-#### Usando Middlewares de bibliotecas externas (morgan)
+### 13. Usando Middlewares de bibliotecas externas (morgan)
 
 Commit: [67826717acc1dc2febed27edac705bbb427618cb](https://github.com/edupsousa/dw2-declaracoes-prova/commit/67826717acc1dc2febed27edac705bbb427618cb)
 
@@ -229,7 +229,7 @@ app.use(morgan('dev'));
 
 A string passada como parâmetro para a função morgan determina o formato do log gerado, para mais informações consulte a documentação [aqui](https://www.npmjs.com/package/morgan).
 
-#### Adicionando uma biblioteca para templates (ejs)
+### 14. Adicionando uma biblioteca para templates (ejs)
 
 Commit: [fccdf79e1eba3384595280107ba87d686459bea4](https://github.com/edupsousa/dw2-declaracoes-prova/commit/fccdf79e1eba3384595280107ba87d686459bea4)
 
