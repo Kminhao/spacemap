@@ -297,3 +297,46 @@ app.get('/', (req, res, next) => {
   });
 });
 ```
+
+### 15. Roteamento de Requisições no Express
+
+Até agora registramos os middlewares para o tratamento de requisições diretamente em nossa aplicação Express (`app`). Esse método funciona bem para pequenas aplicações com poucas rotas, entretando, conforme nossa aplicação for crescendo o arquivo `index.js` pode ser tornar grande e complicado demais com todos os middlewares registrados. Para tornar nosso código mais organizado e mais reusável nós devemos separar as requisições por meio do objeto `express.Router()` ([documentação da função](https://expressjs.com/pt-br/4x/api.html#express.router)).
+
+```js
+const express = require('express');
+const router = express.Router();
+```
+
+O objeto `Router` ([documentação do objeto](https://expressjs.com/pt-br/4x/api.html#router)) pode registrar middlewares da mesma forma que o objeto `Application`, utilizando métodos com nomes iguais ao dos métodos HTTP que deseja tratar (use, get, post, put, delete...).
+
+```js
+router.get('/', (req, res, next) => {
+  ...
+});
+
+router.get('/nova', (req, res, next) => {
+  ...
+});
+
+router.post('/nova', (req, res, next) => {
+  ...
+});
+```
+
+Depois que nosso `router` estiver criado e os middlewares registrados, podemos acoplá-lo a nossa aplicação da mesma forma que qualquer outro middleware.
+
+```js
+const app = express();
+
+app.use('/prova', router);
+```
+
+Dessa forma o nosso router responderá as requisições direcionadas para as urls iniciadas por `/provas`:
+
+```
+GET /provas/
+GET /provas/nova
+POST /provas/nova
+```
+
+Uma aplicação pode possuir diversos routers, é uma boa prática que cada novo router seja criado em um arquivo separado, em nosso caso utilizaremos o diretório `/routes` para cada novo router. Quando um router é criado em um arquivo separado basta exportá-lo por meio da diretiva `module.exports = router`, e então importá-lo no arquivo onde definimos nossa aplicação.
