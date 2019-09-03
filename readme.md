@@ -1,14 +1,41 @@
 # Declarações de Prova
 
-### Desenvolvimento Web 2 - Prof. Eduardo P de Sousa
+Protótipo de uma aplicação Node.js + Express desenvolvido como exemplo na disciplina Desenvolvimento Web 2 do curso de Análise e Desenvolvimento de Sistemas do [IFSP - Campus Caraguatatuba](https://www.ifspcaraguatatuba.edu.br/).
 
-## Descrição
+## Primeiros Passos
 
-Este aplicativo será desenvolvido durante a disciplina DW2 para exemplificar o processo de desenvolvimento de uma aplicação Web na linguagem JavaScript/Node.js.
+### Pré-Requisitos
 
-Cada commit neste repositório exemplificará uma tarefa do desenvolvimento do aplicativo, desde a configuração inicial do ambiente. As diversas etapas serão descritas neste readme com os links para a documentação e guias relacionados.
+- Node.js >= 8.15 https://nodejs.org/en/
+- npm >= 6.8 https://www.npmjs.com/
+- git >= 2.17 https://git-scm.com/
 
-## Passo a Passo
+### Instalação
+
+Clone esse repositório usando a ferramenta _git_:
+
+```
+git clone https://github.com/edupsousa/dw2-declaracoes-prova.git
+```
+
+Acesse o diretório do projeto e instale as dependência usando o _npm_:
+
+```
+cd dw2-declaracoes-prova
+npm install
+```
+
+Para executar o aplicativo digite:
+
+```
+npx nodemon
+```
+
+Pronto! Você pode acessar o aplicativo no endereço: http://localhost:3000/
+
+## Passo a Passo do Desenvolvimento
+
+Essa seção descreve os passos mais importantes do processo de desenvolvimento da aplicação desde a configuração do ambiente do projeto. Use-a para tirar dúvidas sobre as atividades desenvolvidas durantes as aulas.
 
 ### 1. Arquivo .gitignore
 
