@@ -8,13 +8,15 @@ const dbPath = path.join(
     'provas.json'
 );
 
-const lerProvas = () => {
-    let provas = [];
+const lerProvas = (cb) => {
     try {
-        let data = fs.readFileSync(dbPath);
-        provas = JSON.parse(data.toString());
+        fs.readFile(dbPath, (err, data) => {
+            if (err)
+                return cb([]);
+            console.log(data.toString());
+            return cb(JSON.parse(data.toString()));
+        });
     } catch (e) { }
-    return provas;
 };
 
 class Prova {
@@ -24,14 +26,14 @@ class Prova {
         this.dataProva = dataProva;
     }
     salvar() {
-        let provas = lerProvas();
-        this.id = uuid();
-        provas.push(this);
-        fs.writeFileSync(dbPath, JSON.stringify(provas));
+        lerProvas((provas) => {
+            this.id = uuid();
+            provas.push(this);
+            fs.writeFile(dbPath, JSON.stringify(provas), (err) => { });
+        });
     }
-    static listar() {
-        let provas = lerProvas();
-        return provas;
+    static listar(cb) {
+        lerProvas(cb);
     }
 }
 
