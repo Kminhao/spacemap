@@ -34,6 +34,12 @@ class Prova {
     static listar(cb) {
         lerProvas(cb);
     }
+    static getProva(id, cb) {
+        lerProvas((provas) => {
+            let prova = provas.find(v => v.id === id);
+            cb(prova);
+        });
+    }
 }
 
 module.exports = Prova;

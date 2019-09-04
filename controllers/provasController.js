@@ -12,13 +12,32 @@ exports.postNovaProva = (req, res, next) => {
 
 exports.getNovaProva = (req, res, next) => {
   res.render('provas/novaProva', {
-    linkAtivo: 'novaProva'
+    linkAtivo: 'novaProva',
+    formAction: '/provas/nova',
+    prova: new Prova(),
   });
 };
 
 exports.getProvas = (req, res, next) => {
-  res.render('provas/listaProvas', {
-    linkAtivo: 'listaProvas',
-    provas: Prova.listar()
+  Prova.listar((data) => {
+    res.render('provas/listaProvas', {
+      linkAtivo: 'listaProvas',
+      provas: data
+    });
+  })
+};
+
+exports.editarProva = (req, res, next) => {
+  let provaId = req.params.provaId;
+  Prova.getProva(provaId, (prova) => {
+    res.render('provas/editarProva', {
+      linkAtivo: 'listaProvas',
+      formAction: '/provas/editar/' + provaId,
+      prova: prova
+    });
   });
+};
+
+exports.excluirProva = (req, res, next) => {
+
 };
