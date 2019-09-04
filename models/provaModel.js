@@ -13,7 +13,6 @@ const lerProvas = (cb) => {
         fs.readFile(dbPath, (err, data) => {
             if (err)
                 return cb([]);
-            console.log(data.toString());
             return cb(JSON.parse(data.toString()));
         });
     } catch (e) { }
