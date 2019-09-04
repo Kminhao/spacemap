@@ -10,9 +10,10 @@
       "name": "Launch Program",
       "program": "${workspaceFolder}/index.js",
       "restart": true,
-      "runtimeExecutable": "npx",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
       "runtimeArgs": [
-        "nodemon"
+        "--ignore",
+        "'data/*'"
       ],
       "console": "integratedTerminal"
     }
