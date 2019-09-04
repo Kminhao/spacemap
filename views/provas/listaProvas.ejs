@@ -13,6 +13,7 @@
           <td>Disciplina</td>
           <td>Professor</td>
           <td>Data</td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,10 @@
           <td><%= prova.disciplina %></td>
           <td><%= prova.professor %></td>
           <td><%= prova.dataProva %></td>
+          <td>
+            <a href="/provas/editar/<%= prova.id %>" class="btn btn-secondary btn-sm">Editar</a>
+            <a href="/provas/excluir/<%= prova.id %>" class="btn btn-sm btn-danger">Excluir</a>
+          </td>
         </tr>
         <% } %>
       </tbody>

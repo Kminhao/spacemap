@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const uuid = require('uuid/v4');
 
 const dbPath = path.join(
     path.dirname(process.mainModule.filename),
@@ -12,7 +13,7 @@ const lerProvas = () => {
     try {
         let data = fs.readFileSync(dbPath);
         provas = JSON.parse(data.toString());
-    } catch (e) {}
+    } catch (e) { }
     return provas;
 };
 
@@ -24,6 +25,7 @@ class Prova {
     }
     salvar() {
         let provas = lerProvas();
+        this.id = uuid();
         provas.push(this);
         fs.writeFileSync(dbPath, JSON.stringify(provas));
     }
