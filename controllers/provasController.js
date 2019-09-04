@@ -27,7 +27,7 @@ exports.getProvas = (req, res, next) => {
   })
 };
 
-exports.editarProva = (req, res, next) => {
+exports.getEditarProva = (req, res, next) => {
   let provaId = req.params.provaId;
   Prova.getProva(provaId, (prova) => {
     res.render('provas/editarProva', {
