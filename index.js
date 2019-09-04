@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/provas', provasRouter);
 
 app.get('/', (req, res, next) => {
-  res.render('index', {
+  res.render('site/index', {
     titulo: 'Gerador de Declarações de Prova'
   });
 });
