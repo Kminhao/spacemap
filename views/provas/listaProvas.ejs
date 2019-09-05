@@ -23,7 +23,7 @@
           <td><%= prova.professor %></td>
           <td><%= prova.dataProva %></td>
           <td>
-            <a href="/provas/editar/<%= prova.id %>" class="btn btn-secondary btn-sm">Editar</a>
+            <a href="/provas/editar/<%= prova.id %>" class="btn btn-outline-secondary btn-sm">Editar</a>
             <form class="deleteForm" action="/provas/excluir/<%= prova.id %>" style="display: inline-block;">
               <button type="submit" href="/provas/excluir/<%= prova.id %>"
                 class="btn btn-sm btn-outline-danger">Excluir</button>
