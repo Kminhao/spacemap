@@ -39,8 +39,8 @@ exports.getEditarProva = (req, res, next) => {
   });
 };
 
-exports.excluirProva = (req, res, next) => {
-  let provaId = req.params.provaId;
+exports.postExcluirProva = (req, res, next) => {
+  let provaId = req.body.provaId;
   Prova.getProva(provaId, (prova) => {
     if (prova) {
       prova.delete(() => {

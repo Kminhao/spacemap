@@ -24,7 +24,9 @@
           <td><%= prova.dataProva %></td>
           <td>
             <a href="/provas/editar/<%= prova.id %>" class="btn btn-outline-secondary btn-sm">Editar</a>
-            <form class="deleteForm" action="/provas/excluir/<%= prova.id %>" style="display: inline-block;">
+            <form class="deleteForm" method="POST" action="/provas/excluir/<%= prova.id %>"
+              style="display: inline-block;">
+              <input type="hidden" name="provaId" value="<%= prova.id %>">
               <button type="submit" href="/provas/excluir/<%= prova.id %>"
                 class="btn btn-sm btn-outline-danger">Excluir</button>
             </form>
