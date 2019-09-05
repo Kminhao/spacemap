@@ -19,6 +19,10 @@ const lerProvas = (cb) => {
     } catch (e) { }
 };
 
+const escreverProvas = (provas, cb) => {
+    fs.writeFile(dbPath, JSON.stringify(provas), (err) => { cb(err) });
+};
+
 class Prova {
     constructor(disciplina, professor, dataProva) {
         this.disciplina = disciplina;
@@ -29,13 +33,13 @@ class Prova {
         lerProvas((provas) => {
             this.id = uuid();
             provas.push(this);
-            fs.writeFile(dbPath, JSON.stringify(provas), (err) => { cb() });
+            escreverProvas(provas, cb);
         });
     }
     delete(cb) {
         lerProvas((provas) => {
             let filteredProvas = provas.filter(p => p.id !== this.id);
-            fs.writeFile(dbPath, JSON.stringify(filteredProvas), (err) => { cb() });
+            escreverProvas(filteredProvas, cb);
         });
     }
     static createFromJson(json) {
