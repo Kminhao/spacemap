@@ -13,7 +13,8 @@ const lerProvas = (cb) => {
         fs.readFile(dbPath, (err, data) => {
             if (err)
                 return cb([]);
-            return cb(JSON.parse(data.toString()));
+            let provas = JSON.parse(data.toString()).map(Prova.createFromJson);
+            return cb(provas);
         });
     } catch (e) { }
 };
@@ -24,12 +25,27 @@ class Prova {
         this.professor = professor;
         this.dataProva = dataProva;
     }
-    salvar() {
+    salvar(cb) {
         lerProvas((provas) => {
             this.id = uuid();
             provas.push(this);
-            fs.writeFile(dbPath, JSON.stringify(provas), (err) => { });
+            fs.writeFile(dbPath, JSON.stringify(provas), (err) => { cb() });
         });
+    }
+    delete(cb) {
+        lerProvas((provas) => {
+            let filteredProvas = provas.filter(p => p.id !== this.id);
+            fs.writeFile(dbPath, JSON.stringify(filteredProvas), (err) => { cb() });
+        });
+    }
+    static createFromJson(json) {
+        let prova = new Prova(
+            json.disciplina,
+            json.professor,
+            json.dataProva
+        );
+        prova.id = json.id;
+        return prova;
     }
     static listar(cb) {
         lerProvas(cb);

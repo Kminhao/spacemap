@@ -6,8 +6,9 @@ exports.postNovaProva = (req, res, next) => {
     req.body.professor,
     req.body.dataProva
   );
-  novaProva.salvar();
-  res.redirect('/provas');
+  novaProva.salvar(() => {
+    res.redirect('/provas');
+  });
 };
 
 exports.getNovaProva = (req, res, next) => {
@@ -39,5 +40,12 @@ exports.getEditarProva = (req, res, next) => {
 };
 
 exports.excluirProva = (req, res, next) => {
-
+  let provaId = req.params.provaId;
+  Prova.getProva(provaId, (prova) => {
+    if (prova) {
+      prova.delete(() => {
+        res.redirect('/provas');
+      });
+    }
+  });
 };
