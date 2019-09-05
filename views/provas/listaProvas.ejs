@@ -24,7 +24,10 @@
           <td><%= prova.dataProva %></td>
           <td>
             <a href="/provas/editar/<%= prova.id %>" class="btn btn-secondary btn-sm">Editar</a>
-            <a href="/provas/excluir/<%= prova.id %>" class="btn btn-sm btn-danger">Excluir</a>
+            <form class="deleteForm" action="/provas/excluir/<%= prova.id %>" style="display: inline-block;">
+              <button type="submit" href="/provas/excluir/<%= prova.id %>"
+                class="btn btn-sm btn-outline-danger">Excluir</button>
+            </form>
           </td>
         </tr>
         <% } %>
@@ -35,6 +38,15 @@
     </div>
   </section>
   <%- include('../includes/scripts.ejs') %>
+  <script>
+    jQuery(function ($) {
+      $('form.deleteForm').submit(function (event) {
+        var response = confirm('Confirma a exclusão? Essa operação não poderá ser desfeita!');
+        if (!response)
+          event.preventDefault();
+      });
+    });
+  </script>
 </body>
 
 </html>
