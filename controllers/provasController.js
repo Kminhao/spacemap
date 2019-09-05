@@ -49,3 +49,15 @@ exports.postExcluirProva = (req, res, next) => {
     }
   });
 };
+
+exports.postEditarProva = (req, res, next) => {
+  let provaId = req.params.provaId;
+  Prova.getProva(provaId, (prova) => {
+    prova.disciplina = req.body.disciplina;
+    prova.professor = req.body.professor;
+    prova.dataProva = req.body.dataProva;
+    prova.salvar(() => {
+      res.redirect('/provas');
+    });
+  });
+};

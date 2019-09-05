@@ -31,8 +31,14 @@ class Prova {
     }
     salvar(cb) {
         lerProvas((provas) => {
-            this.id = uuid();
-            provas.push(this);
+            if (!this.id) {
+                this.id = uuid();
+                provas.push(this);
+            } else {
+                let index = provas.findIndex(v => v.id === this.id);
+                if (index >= 0)
+                    provas[index] = this;
+            }
             escreverProvas(provas, cb);
         });
     }
