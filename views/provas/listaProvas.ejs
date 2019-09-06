@@ -21,7 +21,7 @@
         <tr>
           <td><%= prova.disciplina %></td>
           <td><%= prova.professor %></td>
-          <td><%= prova.dataProva %></td>
+          <td><%= prova.dataProvaLocal %></td>
           <td>
             <a href="/provas/editar/<%= prova.id %>" class="btn btn-outline-secondary btn-sm">Editar</a>
             <form class="deleteForm" method="POST" action="/provas/excluir/<%= prova.id %>"
