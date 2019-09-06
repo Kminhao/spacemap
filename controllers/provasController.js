@@ -1,4 +1,4 @@
-const Prova = require('../db/models').Prova;
+const Prova = require('../db').Prova;
 
 exports.postNovaProva = (req, res, next) => {
   Prova.create(req.body)
