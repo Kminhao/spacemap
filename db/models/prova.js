@@ -4,9 +4,9 @@ const moment = require('moment');
 module.exports = (sequelize, DataTypes) => {
   const Prova = sequelize.define('Prova', {
     id: { type: DataTypes.STRING, primaryKey: true, allowNull: false, autoIncrement: true },
-    disciplina: { type: DataTypes.STRING, allowNull: false, },
-    professor: { type: DataTypes.STRING, allowNull: false, },
-    dataProva: { type: DataTypes.DATEONLY, allowNull: false, },
+    disciplina: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
+    professor: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
+    dataProva: { type: DataTypes.DATEONLY, allowNull: false, validate: { isAfter: new Date().toISOString() } },
     dataProvaLocal: {
       type: DataTypes.VIRTUAL,
       get() {
