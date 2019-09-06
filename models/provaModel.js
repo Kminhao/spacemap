@@ -1,28 +1,6 @@
-const path = require('path');
-const fs = require('fs');
 const uuid = require('uuid/v4');
 
-const dbPath = path.join(
-    path.dirname(process.mainModule.filename),
-    'data',
-    'provas.json'
-);
-
-const lerProvas = (cb) => {
-    try {
-        fs.readFile(dbPath, (err, data) => {
-            if (err)
-                return cb([]);
-            let provas = JSON.parse(data.toString()).map(Prova.createFromJson);
-            return cb(provas);
-        });
-    } catch (e) { }
-};
-
-const escreverProvas = (provas, cb) => {
-    fs.writeFile(dbPath, JSON.stringify(provas), (err) => { cb(err) });
-};
-
+const ProvaDb = require('../db/models').Prova;
 class Prova {
     constructor(disciplina, professor, dataProva) {
         this.disciplina = disciplina;
@@ -30,22 +8,18 @@ class Prova {
         this.dataProva = dataProva;
     }
     salvar(cb) {
-        lerProvas((provas) => {
-            if (!this.id) {
-                this.id = uuid();
-                provas.push(this);
-            } else {
-                let index = provas.findIndex(v => v.id === this.id);
-                if (index >= 0)
-                    provas[index] = this;
-            }
-            escreverProvas(provas, cb);
-        });
+        if (this.id) {
+            ProvaDb.findByPk(this.id).then((p) => {
+                p.update(this).finally(cb);
+            });
+        } else {
+            this.id = uuid();
+            ProvaDb.create(this).finally(cb);
+        }
     }
     delete(cb) {
-        lerProvas((provas) => {
-            let filteredProvas = provas.filter(p => p.id !== this.id);
-            escreverProvas(filteredProvas, cb);
+        ProvaDb.findByPk(this.id).then((p) => {
+            p.destroy().finally(cb);
         });
     }
     static createFromJson(json) {
@@ -58,13 +32,14 @@ class Prova {
         return prova;
     }
     static listar(cb) {
-        lerProvas(cb);
+        ProvaDb.findAll().then((provas) => {
+            cb(provas.map(p => Prova.createFromJson(p)));
+        }).catch(console.error);
     }
     static getProva(id, cb) {
-        lerProvas((provas) => {
-            let prova = provas.find(v => v.id === id);
-            cb(prova);
-        });
+        ProvaDb.findByPk(id).then((prova) => {
+            cb(Prova.createFromJson(prova));
+        }).catch(console.error);
     }
 }
 
