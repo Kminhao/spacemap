@@ -1,21 +1,21 @@
 {
-  "name": "declaracoes-prova",
+  "name": "SpaceMAP",
   "version": "1.0.0",
-  "description": "### Desenvolvimento Web 2 - Prof. Eduardo P de Sousa",
+  "description": "Aplicação desenvolvida como projeto no curso de ADS - Linguagem Web ll",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edupsousa/dw2-declaracoes-prova.git"
+    "url": "git+https://github.com/Kminhao/spacemap"
   },
-  "author": "Eduardo P de Sousa",
+  "author": "Gabriel de Freitas, Fabiano Alves",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edupsousa/dw2-declaracoes-prova/issues"
+    "url": "https://github.com/Kminhao/spacemap/issues"
   },
-  "homepage": "https://github.com/edupsousa/dw2-declaracoes-prova#readme",
+  "homepage": "https://github.com/Kminhao/spacemap#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "debug": "^4.1.1",
