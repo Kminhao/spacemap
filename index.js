@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const provasRouter = require('./routes/provasRouter');
+const constelacoesRouter = require('./routes/constelacoesRouter');
 
 const app = express();
 
@@ -12,11 +12,11 @@ app.set('views', 'views');
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use('/provas', provasRouter);
+app.use('/constelacoes', constelacoesRouter);
 
 app.get('/', (req, res, next) => {
   res.render('site/index', {
-    titulo: 'Gerador de Declarações de Prova'
+    titulo: 'Página Inicial'
   });
 });
 

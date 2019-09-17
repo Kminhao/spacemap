@@ -1,6 +1,6 @@
 <% linkAtivo = (typeof linkAtivo != 'undefined' ? linkAtivo : 'index') %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Deckarações de Prova</a>
+  <a class="navbar-brand" href="#">Corpos Celestes</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -14,18 +14,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item <%= linkAtivo === 'listaProvas' ? 'active' : '' %>">
-        <a class="nav-link" href="/provas">Ver Provas Cadastradas</a>
+      <li class="nav-item <%= linkAtivo === 'listaConstelacoes' ? 'active' : '' %>">
+        <a class="nav-link" href="/constelacoes">Constelacoes
+        </a>
       </li>
-      <li class="nav-item <%= linkAtivo === 'novaProva' ? 'active' : '' %>">
-        <a class="nav-link" href="/provas/nova">Cadastrar Nova Prova</a>
-      </li>
-      <li
-        class="nav-item <%= linkAtivo === 'solicitarDeclaracao' ? 'active' : '' %>"
-      >
-        <a href="/declaracao/solicitar" class="nav-link"
-          >Solicitar Declaração</a
-        >
+      <li class="nav-item <%= linkAtivo === 'novaConstelacao' ? 'active' : '' %>">
+        <a class="nav-link" href="/constelacoes/nova">Nova Constelação</a>
       </li>
     </ul>
   </div>
