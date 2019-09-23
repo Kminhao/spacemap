@@ -1,0 +1,15 @@
+<form action="<%= formAction %>" method="post">
+    <div class="form-group">
+      <label for="disciplina">Disciplina</label>
+      <input type="text" name="disciplina" id="disciplina" class="form-control" value="<%= prova.disciplina %>" />
+    </div>
+    <div class="form-group">
+      <label for="professor">Professor</label>
+      <input type="text" name="professor" id="professor" class="form-control" value="<%= prova.professor %>" />
+    </div>
+    <div class="form-group">
+      <label for="dataProva">Data da Prova</label>
+      <input type="date" name="dataProva" id="dataProva" class="form-control" value="<%= prova.dataProva %>" />
+    </div>
+    <button class="btn btn-primary" type="submit">Salvar Prova</button>
+  </form>

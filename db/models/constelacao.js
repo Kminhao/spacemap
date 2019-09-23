@@ -9,10 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     descricao: { type: DataTypes.STRING, allowNull: true},
     estrela_pricipal : { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
 
-    })
-}
-Constelacao.associate = function (models){
+    }, {});
+    Constelacao.associate = function (models){
 
-}
-return Constelacao;
-
+    }
+    return  Constelacao;
+};
