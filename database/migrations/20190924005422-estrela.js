@@ -1,28 +1,29 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Constelacao', {
+    return queryInterface.createTable('estrela', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: DataTypes.INTENGER.UNSIGNED
       },
 
       nome: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
 
       descricao: {
-        allowNull : true,
-        type: Sequelize.STRING,
+        allowNull = true,
+        type: DataTypes.STRING,
 
       },
 
       estrela_principal: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
 
       createdAt: {
@@ -38,7 +39,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Constelacao');
+    return queryInterface.dropTable('estrela');
 
   }
 };
