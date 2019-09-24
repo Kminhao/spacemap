@@ -1,0 +1,16 @@
+<form action="<%= formAction %>" method="POST">
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" class="form-control" value="<%= constelacao.nome %>" />
+    </div>
+    <div class="form-group">
+      <label for="nome">Descrição</label>
+      <input type="text" name="descricao" id="descricao" class="form-control" value="<%= constelacao.descricao %>" />
+    </div>
+    <div class="form-group">
+      <label for="nome">Estrela Principal</label>
+      <input type="text" name="estrela_principal" id="estrela_principal" class="form-control" value="<%= constelacao.estrelaprincipal %>" />
+    </div>
+   
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </form>

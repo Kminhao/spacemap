@@ -1,10 +1,11 @@
 const Constelacao = require('../db').Constelacao;
 
 exports.postNovaConstelacao = (req, res, next) => {
-  Constelacao.create(req.body)
-    .then((constelacao) => {
-      res.redirect('/constelacoes');
-    }).catch(console.error);
+  res.end(JSON.stringify(req.body));
+  // Constelacao.create(req.body)
+  //   .then((constelacao) => {
+  //     res.redirect('/constelacoes');
+  //   }).catch(console.error);
 };
 
 exports.getNovaConstelacao = (req, res, next) => {
