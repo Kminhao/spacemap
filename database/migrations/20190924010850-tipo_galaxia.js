@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('estrela', {
+    return queryInterface.createTable('tipo_galaxia', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -21,32 +21,6 @@ module.exports = {
 
       },
 
-      magnitude : {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-
-      tamanho : {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      
-      classificacao : {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      
-      massa : {
-        allowNull: true, 
-        type: Sequelize.FLOAT
-      },
-      
-      distancia : {
-        allowNull: true,
-        type: Sequelize.FLOAT
-      },
-
-
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -59,9 +33,9 @@ module.exports = {
 
   },
 
-  //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID / CLASSIFICAÇÃO_ESTRELA
+  //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('estrela');
+    return queryInterface.dropTable('tipo_galaxia');
 
   }
 };

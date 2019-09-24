@@ -1,7 +1,8 @@
 'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('constelacao', {
+    return queryInterface.createTable('classificacao_nebulosa', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,22 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER.UNSIGNED
       },
 
-      nome: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-
-      descricao: {
+      classificacao: {
         allowNull : true,
         type: Sequelize.STRING,
 
       },
-
-      estrela_principal: {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -37,8 +28,9 @@ module.exports = {
 
   },
 
+  //CHAVE ESTRANGEIRA : CLASSFICAÇÃO_NEBULOSA
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('constelacao');
+    return queryInterface.dropTable('classificacao_nebulosa');
 
   }
-};  
+};

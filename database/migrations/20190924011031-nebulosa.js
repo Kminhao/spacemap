@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('estrela', {
+    return queryInterface.createTable('nebulosa', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,26 +19,6 @@ module.exports = {
         allowNull : true,
         type: Sequelize.STRING,
 
-      },
-
-      magnitude : {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-
-      tamanho : {
-        allowNull: true,
-        type: Sequelize.STRING
-      },
-      
-      classificacao : {
-        allowNull: false,
-        type: Sequelize.INTEGER
-      },
-      
-      massa : {
-        allowNull: true, 
-        type: Sequelize.FLOAT
       },
       
       distancia : {
@@ -59,9 +39,9 @@ module.exports = {
 
   },
 
-  //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID / CLASSIFICAÇÃO_ESTRELA
+  //CHAVE ESTRANGEIRA : CLASSFICAÇÃO_NEBULOSA
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('estrela');
+    return queryInterface.dropTable('nebulosa');
 
   }
 };
