@@ -1,75 +1,75 @@
+
+
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('galaxia', {
+  up: (queryInterface, DataTypes) => {
+    return queryInterface.createTable('galaxias', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
       },
 
       nome: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
 
       descricao: {
-        allowNull = true,
-        type: Sequelize.STRING,
+        allowNull : true,
+        type: DataTypes.STRING,
 
       },
 
       tipo : {
-        allowNull = true,
-        type: Sequelize.STRING,
+        allowNull : true,
+        type: DataTypes.STRING,
       },
 
       magnitude : {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
 
-      tamanho : {
-        allowNull: true,
-      },
-      
+
       classificacao : {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       
       massa : {
         allowNull: true, 
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
       
       distancia : {
         allowNull: true,
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
 
-      numero_estrelas : {
+      numeroe_strelas : {
         allowNull: true,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
 
+   
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
-    })
+  })
 
   },
 
   //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('galaxia');
+  down: (queryInterface, DataTypes) => {
+    return queryInterface.dropTable('galaxias');
 
   }
 };

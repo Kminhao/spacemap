@@ -1,40 +1,40 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('tipo_galaxia', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
       },
 
       nome: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
 
       descricao: {
         allowNull : true,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
 
       },
 
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     })
 
   },
 
   //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID 
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('tipo_galaxia');
 
   }

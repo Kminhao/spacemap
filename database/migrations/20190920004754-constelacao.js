@@ -1,43 +1,43 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('constelacao', {
       id: {
         allowNull: false,
+        primaryKey: true,
         autoIncrement: true,
-        primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        type: DataTypes.INTEGER.UNSIGNED,
       },
 
       nome: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
       },
 
       descricao: {
         allowNull : true,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
 
       },
 
       estrela_principal: {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING,
       },
 
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE,
       }
     })
 
   },
 
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('constelacao');
 
   }

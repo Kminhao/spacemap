@@ -1,66 +1,66 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('estrela', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
       },
 
       nome: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING
       },
 
       descricao: {
         allowNull : true,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING
 
       },
 
       magnitude : {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
 
       tamanho : {
         allowNull: true,
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       
       classificacao : {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: DataTypes.INTEGER
       },
       
       massa : {
         allowNull: true, 
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
       
       distancia : {
         allowNull: true,
-        type: Sequelize.FLOAT
+        type: DataTypes.FLOAT
       },
 
 
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     })
 
   },
 
   //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID / CLASSIFICAÇÃO_ESTRELA
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('estrela');
 
   }

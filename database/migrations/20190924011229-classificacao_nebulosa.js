@@ -1,35 +1,35 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable('classificacao_nebulosa', {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
-        type: Sequelize.INTEGER.UNSIGNED
+        primaryKey: true,
+        type: DataTypes.INTEGER.UNSIGNED
       },
 
       classificacao: {
         allowNull : true,
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
 
       },
       
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     })
 
   },
 
   //CHAVE ESTRANGEIRA : CLASSFICAÇÃO_NEBULOSA
-  down: (queryInterface, Sequelize) => {
+  down: (queryInterface, DataTypes) => {
     return queryInterface.dropTable('classificacao_nebulosa');
 
   }
