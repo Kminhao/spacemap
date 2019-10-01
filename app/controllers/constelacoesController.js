@@ -1,4 +1,6 @@
-const Constelacao = require('../database').Constelacao;
+
+const Constelacao = require('../models/constelacao');
+
 
 exports.postNovaConstelacao = (req, res, next) => {
   res.end(JSON.stringify(req.body));

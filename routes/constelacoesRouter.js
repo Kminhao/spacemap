@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const constelacoesController = require('../controllers/constelacoesController');
+const constelacoesController = require('../app/controllers/constelacoesController');
 
 router.get('/editar/:constelacaoId', constelacoesController.getEditarConstelacao);
 router.post('/editar/:constelacaoId', constelacoesController.postEditarConstelacao);
