@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+<body>
+  <%- include('../includes/navbar.ejs') %>
+  <section class="container">
+    <h1>Listagem de Constelações</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td col='2'>Descrição</td>
+          <td>Estrela Principal</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let prova of provas) { %>
+        <tr>
+          <td><%= prova.disciplina %></td>
+          <td><%= prova.professor %></td>
+          <td><%= prova.dataProvaLocal %></td>
+          <td>
+            <a href="/constelacoes/editar/<%= constelacao.id %>" class="btn btn-outline-secondary btn-sm">Editar</a>
+            <form class="deleteForm" method="POST" action="/constelacoes/excluir/<%= prova.id %>"
+              style="display: inline-block;">
+              <input type="hidden" name="constelacaoId" value="<%= prova.id %>">
+              <button type="submit" href="/constelacoes/excluir/<%= prova.id %>"
+                class="btn btn-sm btn-outline-danger">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <div class="row justify-content-end">
+      <a class="btn btn-outline-primary" href="/constelacoes/nova">Nova Constelação</a>
+    </div>
+  </section>
+  <%- include('../includes/scripts.ejs') %>
+  <script>
+    jQuery(function ($) {
+      $('form.deleteForm').submit(function (event) {
+        var response = confirm('Confirma a exclusão? Essa operação não poderá ser desfeita!');
+        if (!response)
+          event.preventDefault();
+      });
+    });
+  </script>
+</body>
+
+</html>
