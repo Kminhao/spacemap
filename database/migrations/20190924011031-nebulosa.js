@@ -20,12 +20,29 @@ module.exports = {
         type: DataTypes.STRING,
 
       },
-      
+
       distancia : {
         allowNull: true,
         type: DataTypes.FLOAT
       },
 
+      constelacao_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'constelacao',
+          key: 'id'
+        }
+      },
+
+      classificacao_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'classificacao_nebulosa',
+          key: 'id'
+        }
+      },
 
       createdAt: {
         allowNull: false,

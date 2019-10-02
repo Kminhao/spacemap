@@ -15,7 +15,7 @@ module.exports = {
         type: DataTypes.STRING,
 
       },
-      
+
       cor_aparente : {
         allowNull : true,
         type: DataTypes.STRING,

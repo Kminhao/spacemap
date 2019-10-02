@@ -30,22 +30,42 @@ module.exports = {
         allowNull: true,
         type: DataTypes.STRING
       },
-      
-      classificacao : {
-        allowNull: false,
-        type: DataTypes.INTEGER
-      },
-      
+
+      // classificacao : {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER
+      // },
+
       massa : {
-        allowNull: true, 
+        allowNull: true,
         type: DataTypes.FLOAT
       },
-      
+
       distancia : {
         allowNull: true,
         type: DataTypes.FLOAT
       },
 
+
+      classificacao_id : {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'Classificacao_estrela',
+          key: 'id'
+        }
+      },
+
+
+//VÊ ESSA DAQUI DEPOIS 
+      constelacao_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'constelacao',
+          key: 'id'
+        }
+      },
 
       createdAt: {
         allowNull: false,

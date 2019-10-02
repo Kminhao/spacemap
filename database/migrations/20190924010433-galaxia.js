@@ -1,10 +1,10 @@
-
-
 'use strict';
+
+//alterado de galaxias -> galaxia, se der BO mexe ai EHUHEHU
 
 module.exports = {
   up: (queryInterface, DataTypes) => {
-    return queryInterface.createTable('galaxias', {
+    return queryInterface.createTable('galaxia', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -34,27 +34,35 @@ module.exports = {
       },
 
 
-      classificacao : {
-        allowNull: false,
-        type: DataTypes.INTEGER
-      },
-      
+      // classificacao : {
+      //   allowNull: false,
+      //   type: DataTypes.INTEGER
+      // },
+
       massa : {
-        allowNull: true, 
+        allowNull: true,
         type: DataTypes.FLOAT
       },
-      
+
       distancia : {
         allowNull: true,
         type: DataTypes.FLOAT
       },
 
-      numeroe_strelas : {
+      numero_estrelas : {
         allowNull: true,
         type: DataTypes.INTEGER
       },
 
-   
+      galaxia_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'tipo_galaxia',
+          key: 'id'
+        }
+      },
+
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE
@@ -67,9 +75,9 @@ module.exports = {
 
   },
 
-  //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID 
+  //CHAVE ESTRANGEIRA : CONSTENLAÇÃO ID
   down: (queryInterface, DataTypes) => {
-    return queryInterface.dropTable('galaxias');
+    return queryInterface.dropTable('galaxia');
 
   }
 };
