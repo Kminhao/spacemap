@@ -14,7 +14,9 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {});
     Constelacao.associate = function (models){
-        //relacionamentos aqui
+        Estrela.belongsTo(models.Constelacao, {foreignKey: 'constelacao_id', as :' constelacao'})
+        Estrela.hasOne(models.Classsificacao_estrela, {foreignKey: 'classificacao_id', as: 'classificacao'})
+
     }
     return  Constelacao;
 };

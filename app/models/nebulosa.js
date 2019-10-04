@@ -6,10 +6,11 @@ module.exports = (sequelize, DataTypes) => {
     nome: {type: DataTypes.STRING, allowNull:false},
     descricao: {type: DataTypes.STRING, allowNull:true},
     distancia: {type: DataTypes.FLOAT, allowNull:true},
-  }; {});
+  }, {});
 
   Nebulosa.associate = function(models){
-    //relacionamentos
+    Nebulosa.hasOne(models.Classificacao_nebulosa, {foreignKey: 'classificacao_id', as : 'classificacao'})
+    Nebulosa.belongsTo(models.Constelacao, {foreignKey: 'constelacao_id', as : 'constelacao'})
   };
   return Nebulosa;
 

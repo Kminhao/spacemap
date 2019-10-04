@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Galaxia.associate = function(models){
-    // relacionamentos aqui 
+    Galaxia.belongsTo(models.Constelacao, {foreignKey: 'constelacao_id', as : 'constelacao'})
+
   };
 
   return Galaxia;

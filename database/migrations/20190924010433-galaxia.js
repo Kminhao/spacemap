@@ -33,12 +33,6 @@ module.exports = {
         type: DataTypes.STRING
       },
 
-
-      // classificacao : {
-      //   allowNull: false,
-      //   type: DataTypes.INTEGER
-      // },
-
       massa : {
         allowNull: true,
         type: DataTypes.FLOAT
@@ -52,6 +46,15 @@ module.exports = {
       numero_estrelas : {
         allowNull: true,
         type: DataTypes.INTEGER
+      },
+
+      constelacao_id: {
+        allowNull: true,
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'constelacao',
+          key:'id'
+        }
       },
 
       galaxia_id: {
