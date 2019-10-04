@@ -2,7 +2,7 @@
 
 
 module.exports = (sequelize, DataTypes) => {
-    const tipo_galaxia = sequelize.Define('Tipo_galaxia', {
+    const Tipo_galaxia = sequelize.define('Tipo_galaxia', {
       id: {type: DataTypes.STRING, primaryKey:true, allowNull:false, autoIncrement:true},
       nome: {type: DataTypes.STRING, allowNull:false},
       descricao: {type: DataTypes.STRING, allowNull:true}

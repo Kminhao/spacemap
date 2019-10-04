@@ -37,7 +37,7 @@ module.exports = {
 
       classificacao_id: {
         allowNull: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER.UNSIGNED,
         references: {
           model: 'classificacao_nebulosa',
           key: 'id'

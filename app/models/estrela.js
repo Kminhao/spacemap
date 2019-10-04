@@ -3,20 +3,20 @@ const moment = require('moment');
 
 
 module.exports = (sequelize, DataTypes) => {
-    const Constelacao = sequelize.define('Estrela', {
+    const Estrela = sequelize.define('Estrela', {
     id: { type: DataTypes.STRING, primaryKey: true, allowNull: false, autoIncrement: true },
     nome: { type: DataTypes.STRING, allowNull: false, validate: { notEmpty: true } },
     descricao: { type: DataTypes.STRING, allowNull: true},
     magnitude: {type: DataTypes.STRING, allowNull:true},
     tamanho: {type: DataTypes.STRING, allowNull:true},
-    classificacao: { type: DataTypes.INTEGER, allowNull:true},
+    constelacao_id: { type: DataTypes.INTEGER, allowNull:true},
     massa: {type: DataTypes.FLOAT, allowNull:true},
 
     }, {});
-    Constelacao.associate = function (models){
+    Estrela.associate = function (models){
         Estrela.belongsTo(models.Constelacao, {foreignKey: 'constelacao_id', as :' constelacao'})
         Estrela.hasOne(models.Classsificacao_estrela, {foreignKey: 'classificacao_id', as: 'classificacao'})
 
     }
-    return  Constelacao;
+    return Estrela;
 };

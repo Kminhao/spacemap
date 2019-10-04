@@ -1,12 +1,12 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-  const classificacao_nebulosa = sequelize.Define('Classificacao_nebulosa', {
-    id: {types: DataTypes.STRING, primaryKey:true, allowNull:false, autoIncrement:true},
-    classificacao: {type: DataTypes.STRING, allowNull:false},
+  const Classificacao_nebulosa = sequelize.define('Classificacao_nebulosa', {
+    classificacao: DataTypes.STRING
   }, {});
+  
   Classificacao_nebulosa.associate = function (models) {
-    Classificacao_nebulosa.belongsTo(models.Nebulosa, {foreignKey: 'classificacao_id', as : 'classificacao'})
+    Classificacao_nebulosa.belongsTo(models.Nebulosa, {foreignKey: 'classificacao_id', as : 'class'})
 
   }
   return Classificacao_nebulosa;

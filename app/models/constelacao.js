@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {});
     Constelacao.associate = function (models){
-       Constelacao.hasMany(models.Estrela, {foreignKey:'constelacao_id', as : 'constelacao'})
-       Constelacao.hasMany(models.Galaxia, {foreignKey:'constelacao_id', as : 'constelacao'})
-       Constelacao.hasMany(models.Nebulosa, {foreignKey:'constelacao_id', as : 'constelacao'})
+       Constelacao.hasMany(models.Estrela, {foreignKey:'constelacao_id', as : 'estrelas'})
+       Constelacao.hasMany(models.Galaxia, {foreignKey:'constelacao_id', as : 'galaxias'})
+       Constelacao.hasMany(models.Nebulosa, {foreignKey:'constelacao_id', as : 'nebulosas'})
     }
     return Constelacao;
 };

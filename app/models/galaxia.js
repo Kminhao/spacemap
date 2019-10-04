@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (sequelize, DataTypes) => {
-  const galaxia = sequelize.Define('Galaxia', {
+  const Galaxia = sequelize.define('Galaxia', {
     id: {type: DataTypes.STRING, primaryKey:true, allowNull:false, autoIncrement:true},
     nome: {type: DataTypes.STRING, allowNull:false},
     descricao: {type: DataTypes.STRING, allowNull:true},
